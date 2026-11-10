@@ -1,0 +1,30 @@
+
+# Entornos virtuales
+.venv/
+venv/
+env/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Archivos de Jupyter
+.ipynb_checkpoints/
+
+# Archivos temporales
+*.log
+*.tmp
+.DS_Store
+Thumbs.db
+
+# Archivos de configuración local
+.env
+.env.*
+
+# Resultados generados del procesamiento
+diara_liceo_ticaban_imagenes_web/
+
+
+# Archivos de configuración de VS Code
+.vscode/
