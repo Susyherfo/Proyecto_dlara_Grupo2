@@ -1,0 +1,10 @@
+{
+  "nombre": "Liceo de Ticabán",
+  "ubicacion": null,
+  "institucion_ejecutora": null,
+  "monto_colones": null,
+  "avance_previsto_pct": null,
+  "avance_observado_pct": null,
+  "hitos": [],
+  "fuente": "Completar con datos oficiales (obrapublica.info / CGR). Lo que quede en null se muestra como 'Dato no disponible'."
+}

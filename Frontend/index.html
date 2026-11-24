@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#d8ff3e">
+  <meta name="description" content="Un archivo ciudadano para explorar cómo se procesan las fotografías del Liceo de Ticabán.">
+  <title>dIAra · Archivo de obra</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <a class="skip" href="#contenido">Saltar al contenido</a>
+  <header class="masthead">
+    <a class="wordmark" href="#" aria-label="dIAra, inicio"><span>d</span>IAra<sup>®</sup></a>
+    <nav aria-label="Navegación">
+      <a href="#ruta">Ruta del dato</a>
+      <a href="#archivo">Archivo visual</a>
+    </nav>
+    <div class="api-state" id="apiState" role="status"><i></i><span id="apiStateText">Conectando API</span></div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" aria-labelledby="titulo">
+      <div class="hero-copy">
+        <h1 id="titulo">DETRÁS DE<br><span>409 FOTOS.</span></h1>
+        <p class="hero-intro">La construcción se ve en fragmentos. Este archivo te deja recorrerlos, revisar las decisiones y sacar tus propias conclusiones.</p>
+        <div class="project-line">
+          <strong id="projectName">Liceo de Ticabán</strong>
+          <span id="projectRange">Cargando periodo…</span>
+        </div>
+        <a class="hero-link" href="#archivo">Explorar el archivo <b aria-hidden="true">↘</b></a>
+        <p id="dataError" class="data-error" role="alert" hidden></p>
+      </div>
+      <figure class="hero-visual">
+        <img id="heroImage" alt="">
+        <span class="hero-stamp"><b id="periodValue">43</b><small>DÍAS<br>EN VISTA</small></span>
+        <figcaption>
+          <span class="hero-caption-label">Última evidencia útil <i id="heroReview" hidden>REVISAR</i></span>
+          <strong id="ultimaHero">—</strong>
+        </figcaption>
+      </figure>
+    </section>
+
+    <section class="numbers" aria-label="Resumen de fotografías">
+      <div class="number-cell"><b id="totalMetric">—</b><span>REGISTROS<br>ANALIZADOS</span></div>
+      <div class="number-cell"><b id="keptMetric">—</b><span>FOTOS<br>CONSERVADAS</span></div>
+      <div class="number-cell"><b id="dropMetric">—</b><span>DESCARTADAS<br>POR LUZ</span></div>
+      <div class="number-cell"><b id="reviewMetric">—</b><span>EN REVISIÓN<br>DE ENCUADRE</span></div>
+    </section>
+
+    <section id="ruta" class="route" aria-labelledby="routeTitle">
+      <div class="section-topline"><span id="keepPercent">—</span></div>
+      <h2 id="routeTitle">DE ARCHIVO<br>A <em>EVIDENCIA.</em></h2>
+      <div class="route-bar" role="img" aria-label="Proporción de fotografías conservadas y descartadas">
+        <span id="keepBar"></span><span id="dropBar"></span>
+      </div>
+      <ol class="pipeline">
+        <li>
+          <span class="pipeline-no">01</span>
+          <div><h3>Inventario</h3><p>Fecha, hora, brillo y duplicados exactos.</p><b id="inventoryCount">409</b></div>
+        </li>
+        <li>
+          <span class="pipeline-no">02</span>
+          <div><h3>Filtro de luz</h3><p>Las fotos oscuras se apartan del archivo público.</p><b id="darkCount">233</b></div>
+        </li>
+        <li>
+          <span class="pipeline-no">03</span>
+          <div><h3>Encuadre</h3><p>La alerta pide revisión; no elimina la imagen.</p><b id="reviewCount">7</b></div>
+        </li>
+        <li>
+          <span class="pipeline-no">04</span>
+          <div><h3>Archivo</h3><p>Una secuencia disponible para explorar.</p><b id="archiveCount">176</b></div>
+        </li>
+      </ol>
+      <details class="rules">
+        <summary>Ver las reglas y límites del filtro <span aria-hidden="true">＋</span></summary>
+        <p>Se usa brillo medio mínimo de 30, hasta 80 % de píxeles oscuros y similitud de encuadre de 0.80 dentro de cuatro días. Son umbrales iniciales: una foto marcada requiere revisión humana.</p>
+      </details>
+    </section>
+
+    <section id="archivo" class="archive" aria-labelledby="archiveTitle">
+      <div class="archive-heading">
+        <h2 id="archiveTitle">MIRA OTRA<br><em>PERSPECTIVA.</em></h2>
+        <p>Compara la primera vista estable con cualquier momento del registro. Las fotos muestran apariencia, no porcentaje de avance.</p>
+      </div>
+
+      <div class="comparison">
+        <div class="comparison-heading">
+          <span>PRIMERA VISTA ESTABLE <b id="cap0">—</b></span>
+          <span class="elapsed" id="dayCounter">—</span>
+          <span>FECHA ELEGIDA <b id="cap1">—</b></span>
+        </div>
+        <div class="compare">
+          <figure><img id="img0" alt=""><figcaption>REFERENCIA</figcaption></figure>
+          <span class="compare-mark" aria-hidden="true">×</span>
+          <figure><img id="img1" alt=""><figcaption>EN EL TIEMPO</figcaption></figure>
+        </div>
+        <div class="scrubber">
+          <div class="scrubber-label"><label for="rango">RECORRER SECUENCIA</label><span id="timelineDate">—</span></div>
+          <input id="rango" type="range" min="0" max="0" value="0" aria-label="Seleccionar fotografía para comparar">
+          <div class="scrubber-ends"><span id="rangeStart">Inicio</span><span id="rangeEnd">Última foto</span></div>
+          <div class="scrubber-actions">
+            <button type="button" class="plain-button" id="prevPhoto" aria-label="Fotografía anterior">← Anterior</button>
+            <button type="button" class="play-button" id="playPhotos" aria-pressed="false">▶ Recorrer la secuencia</button>
+            <button type="button" class="plain-button" id="nextPhoto" aria-label="Fotografía siguiente">Siguiente →</button>
+          </div>
+          <p id="aviso" role="status" aria-live="polite"></p>
+        </div>
+      </div>
+
+      <div class="archive-toolbar">
+        <label class="search-control">BUSCAR<input type="search" id="searchPhotos" placeholder="Fecha o archivo" autocomplete="off"></label>
+        <label class="review-control"><input id="reviewOnly" type="checkbox"><span>SOLO REVISIÓN</span></label>
+        <button type="button" class="plain-button clear-button" id="clearFilters">Limpiar filtros ×</button>
+        <span class="result-count" id="galleryCount" aria-live="polite"></span>
+      </div>
+      <div id="monthCoverage" class="month-coverage" aria-label="Filtrar por mes"></div>
+      <div id="gallery" class="gallery" aria-live="polite"></div>
+      <p class="empty-state" id="emptyState" hidden>No hay fotos con esos filtros.</p>
+      <button type="button" class="load-more" id="loadMorePhotos" hidden>Mostrar más fotos <span aria-hidden="true">↓</span></button>
+    </section>
+  </main>
+
+  <footer class="colophon">
+      <div class="colophon-line"><span id="proc">Fuente y fecha de actualización desde la API</span></div>
+    <div class="colophon-note">
+      <p>Las fotografías no calculan avance físico ni confirman el cumplimiento del cronograma. Un encuadre distinto no demuestra una irregularidad.</p>
+      <details>
+        <summary>Ficha del proyecto y datos faltantes</summary>
+        <p id="coverageNote">La selección cubre el periodo disponible en el registro.</p>
+        <div id="officialFacts" class="official-facts"></div>
+        <p>La prueba de usabilidad con una persona y la iteración posterior todavía deben documentarse.</p>
+      </details>
+    </div>
+  </footer>
+
+  <dialog id="photoDialog" class="photo-dialog" aria-labelledby="dialogTitle">
+    <div class="dialog-top"><h2 id="dialogTitle">—</h2><button id="closeDialog" class="close-button" type="button" aria-label="Cerrar fotografía">×</button></div>
+    <img id="dialogImage" alt="">
+    <div class="dialog-meta"><span id="dialogInfo"></span><button id="dialogCompare" class="play-button" type="button">Comparar esta fecha ↗</button></div>
+    <div class="dialog-nav"><button id="dialogPrev" class="plain-button" type="button">← Anterior</button><button id="dialogNext" class="plain-button" type="button">Siguiente →</button></div>
+  </dialog>
+  <script src="app.js"></script>
+</body>
+</html>

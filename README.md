@@ -175,3 +175,29 @@ La clasificación automatizada debe entenderse como una herramienta de apoyo y n
 ---
 
 **Estado de esta etapa:** implementación inicial y ejecución local del proceso de limpieza utilizando exclusivamente el conjunto de fotografías de ejemplo del Liceo de Ticabán.
+
+## 9. Frontend interactivo para consulta ciudadana
+
+El frontend está en `Frontend/` y presenta el recorrido de limpieza, un comparador temporal, filtros por mes y por revisión, y una galería ampliable. No calcula el avance físico de la obra.
+
+Desde la raíz del repositorio, instala las dependencias del backend:
+
+```bash
+python3 -m pip install -r requirements.txt
+```
+
+Inicia el servidor integrado de frontend y API:
+
+```bash
+python3 api_server.py
+```
+
+Abre `http://127.0.0.1:8765/`. La página carga el registro desde `/api/dashboard` y las fotografías conservadas desde `/api/photos/{id}/image`; no necesita generar un JSON ni configurar CORS. El servidor lee `diara_liceo_ticaban_imagenes_web/registro_limpieza.csv` y entrega solo imágenes validadas por el backend. Para cambiar el puerto:
+
+```bash
+python3 api_server.py --port 8080
+```
+
+Si el CSV cambia, recarga la página para consultar los datos actualizados. La API lee el registro directamente; no hace falta generar archivos JSON.
+
+La ficha `Frontend/data/obra.json` deja como no disponibles los montos, la institución ejecutora y los porcentajes de avance mientras no haya fuentes oficiales. La prueba de usabilidad con una persona del público objetivo, la iteración sustentada en esa prueba y sus resultados deben realizarse y documentarse por separado; el prototipo no los presenta como completados.
